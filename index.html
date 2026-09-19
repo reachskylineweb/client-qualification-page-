@@ -1,0 +1,2265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reach Skyline | 20-Question Lead Qualification Assessment</title>
+  
+  <!-- Speed Hack: Preload Logo -->
+  <link rel="preload" as="image" href="https://res.cloudinary.com/dlttxqrod/image/upload/v1788758367/New-Logo-White-text-1536x915-1-300x179_mayw3z.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ==========================================================================
+       Reach Skyline - Lead Qualification Assessment Flow
+       Clean Matte Dark Minimalist Design (Exact Match to Uploaded Reference)
+       ========================================================================== */
+    :root {
+      --primary: #D4A23A;
+      --primary-hover: #E5B247;
+      --bg-dark: #121212;
+      --card-bg: #1F1F1F;
+      --card-hover: #262626;
+      --card-selected-bg: #28241D;
+      --card-border: #333333;
+      --card-border-hover: #555555;
+      --text-white: #FFFFFF;
+      --text-muted: #A1A1AA;
+      --font-heading: 'Space Grotesk', sans-serif !important;
+      --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif !important;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--bg-dark);
+      color: var(--text-white);
+      line-height: 1.6;
+      overflow-x: hidden;
+      padding-bottom: 60px;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Top Navigation Header */
+    .wp-site-header {
+      position: sticky;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 9999;
+      background: rgba(18, 18, 18, 0.96);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid #222222;
+      padding: 16px 40px;
+      margin-bottom: 34px;
+    }
+
+    .wp-header-container {
+      max-width: 1350px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .header-logo-link {
+      display: flex;
+      align-items: center;
+    }
+
+    .header-logo-img {
+      height: 44px;
+      width: auto;
+      object-fit: contain;
+      transition: transform 0.2s ease;
+    }
+
+    .header-logo-img:hover {
+      transform: scale(1.04);
+    }
+
+    .nav-btn-home {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 24px;
+      border-radius: 9999px;
+      background: #1F1F1F;
+      color: #FFFFFF !important;
+      font-size: 14px;
+      font-weight: 600;
+      border: 1px solid #333333;
+      transition: all 0.2s ease;
+    }
+
+    .nav-btn-home:hover {
+      background: var(--primary);
+      color: #121212 !important;
+      border-color: var(--primary);
+    }
+
+    /* Main Container */
+    #rsq-form-container {
+      font-family: var(--font-body);
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 40px;
+      background-color: #141414;
+      border: 1px solid #222222;
+      border-radius: 20px;
+      color: var(--text-white);
+      box-sizing: border-box;
+      text-align: left;
+      position: relative;
+    }
+
+    #rsq-form-container * {
+      box-sizing: border-box;
+    }
+
+    /* Step-by-Step Horizontal Timeline Header */
+    .rsq-header {
+      margin-bottom: 38px;
+    }
+
+    .rsq-timeline-container {
+      position: relative;
+      margin-bottom: 24px;
+      padding: 0 10px;
+    }
+
+    /* Base track line */
+    .rsq-timeline-track {
+      position: absolute;
+      top: 21px;
+      left: 40px;
+      right: 40px;
+      height: 4px;
+      background: #242424;
+      border-radius: 9999px;
+      z-index: 1;
+    }
+
+    /* Active dynamic fill line */
+    .rsq-timeline-line-fill {
+      height: 100%;
+      width: 0%;
+      background: var(--primary);
+      border-radius: 9999px;
+      transition: width 0.4s ease;
+    }
+
+    /* Nodes Container */
+    .rsq-timeline-nodes {
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+      z-index: 2;
+    }
+
+    .rsq-timeline-node {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+      flex: 1;
+    }
+
+    .rsq-node-circle {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #1A1A1A;
+      border: 2px solid #333333;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 14px;
+      transition: all 0.25s ease;
+      position: relative;
+    }
+
+    .rsq-node-check {
+      display: none;
+      font-size: 14px;
+    }
+
+    .rsq-node-label {
+      margin-top: 10px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      transition: color 0.3s ease;
+    }
+
+    /* Completed Node State */
+    .rsq-timeline-node.rsq-node-completed .rsq-node-circle {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #121212;
+    }
+    .rsq-timeline-node.rsq-node-completed .rsq-node-num { display: none; }
+    .rsq-timeline-node.rsq-node-completed .rsq-node-check { display: inline; }
+    .rsq-timeline-node.rsq-node-completed .rsq-node-label { color: #E4E4E7; }
+
+    /* Active Node State */
+    .rsq-timeline-node.rsq-node-active .rsq-node-circle {
+      background: #141414;
+      border-color: var(--primary);
+      color: var(--primary);
+      transform: scale(1.12);
+    }
+    .rsq-timeline-node.rsq-node-active .rsq-node-label {
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    /* Step Panels with Smooth Fade-In & Fade-Out Transitions */
+    .rsq-step-panel {
+      display: none;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    /* Active Step Panel (Faded In) */
+    .rsq-step-panel.rsq-active {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Fading Out Step Panel */
+    .rsq-step-panel.rsq-fading-out {
+      display: block !important;
+      opacity: 0 !important;
+      transform: translateY(-12px) !important;
+      pointer-events: none;
+    }
+
+    .rsq-step-panel.rsq-fading-out-reverse {
+      display: block !important;
+      opacity: 0 !important;
+      transform: translateY(12px) !important;
+      pointer-events: none;
+    }
+
+    .rsq-section-heading {
+      font-family: var(--font-heading);
+      font-size: 26px;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin: 0 0 6px 0;
+      letter-spacing: -0.02em;
+    }
+
+    .rsq-section-subheading {
+      font-size: 15px;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+    }
+
+    /* Field Groups */
+    .rsq-field-group {
+      margin-bottom: 28px;
+    }
+
+    .rsq-label {
+      display: block;
+      font-size: 18px;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin-bottom: 16px;
+      line-height: 1.4;
+    }
+
+    .rsq-q-number {
+      color: var(--primary);
+      font-family: var(--font-heading);
+      font-weight: 700;
+      margin-right: 4px;
+    }
+
+    .rsq-required-star {
+      color: var(--primary);
+      margin-left: 2px;
+    }
+
+    /* Text Inputs for Step 1 */
+    .rsq-input {
+      width: 100%;
+      padding: 18px 24px;
+      background-color: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      color: #FFFFFF;
+      font-family: var(--font-body);
+      font-size: 16px;
+      outline: none;
+      transition: all 0.2s ease;
+    }
+
+    .rsq-input:focus {
+      background-color: var(--card-hover);
+      border-color: var(--primary);
+      box-shadow: 0 0 14px rgba(212, 162, 58, 0.2);
+    }
+
+    .rsq-input::placeholder {
+      color: var(--text-muted);
+      opacity: 0.6;
+    }
+
+    /* Phone Input with Country Code Selector */
+    .rsq-phone-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      width: 100%;
+    }
+
+    .rsq-country-dropdown {
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .rsq-country-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0 16px;
+      height: 60px;
+      background-color: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      color: #FFFFFF;
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      user-select: none;
+      outline: none;
+    }
+
+    .rsq-country-btn:hover, .rsq-country-btn:focus {
+      background-color: var(--card-hover);
+      border-color: var(--primary);
+    }
+
+    .rsq-country-flag {
+      font-size: 20px;
+      line-height: 1;
+    }
+
+    .rsq-country-code {
+      font-weight: 700;
+      color: #FFFFFF;
+    }
+
+    .rsq-country-arrow {
+      font-size: 10px;
+      color: var(--text-muted);
+      transition: transform 0.2s ease;
+    }
+
+    .rsq-country-dropdown.rsq-open .rsq-country-arrow {
+      transform: rotate(180deg);
+    }
+
+    .rsq-country-menu {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      width: 320px;
+      background-color: #1A1A1A;
+      border: 1px solid #333333;
+      border-radius: 14px;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
+      z-index: 10000;
+      overflow: hidden;
+      animation: rsqMenuFadeIn 0.2s ease;
+    }
+
+    @keyframes rsqMenuFadeIn {
+      from { opacity: 0; transform: translateY(-6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .rsq-country-search-wrap {
+      padding: 12px;
+      border-bottom: 1px solid #282828;
+      background: #141414;
+    }
+
+    .rsq-country-search-input {
+      width: 100%;
+      padding: 10px 14px;
+      background: #242424;
+      border: 1px solid #3A3A3A;
+      border-radius: 8px;
+      color: #FFFFFF;
+      font-family: var(--font-body);
+      font-size: 14px;
+      outline: none;
+    }
+
+    .rsq-country-search-input:focus {
+      border-color: var(--primary);
+    }
+
+    .rsq-country-search-input::placeholder {
+      color: var(--text-muted);
+    }
+
+    .rsq-country-list {
+      max-height: 220px;
+      overflow-y: auto;
+      padding: 6px 0;
+    }
+
+    .rsq-country-list::-webkit-scrollbar {
+      width: 6px;
+    }
+    .rsq-country-list::-webkit-scrollbar-thumb {
+      background: #333333;
+      border-radius: 4px;
+    }
+
+    .rsq-country-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 16px;
+      cursor: pointer;
+      font-size: 14px;
+      color: #E4E4E7;
+      transition: background 0.15s ease;
+    }
+
+    .rsq-country-item:hover, .rsq-country-item.rsq-selected {
+      background: #28241D;
+      color: var(--primary);
+    }
+
+    .rsq-country-item-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .rsq-country-item-name {
+      font-weight: 500;
+    }
+
+    .rsq-country-item-code {
+      font-weight: 700;
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+
+    .rsq-country-item:hover .rsq-country-item-code,
+    .rsq-country-item.rsq-selected .rsq-country-item-code {
+      color: var(--primary);
+    }
+
+    .rsq-no-results {
+      padding: 14px 16px;
+      font-size: 13.5px;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    .rsq-phone-input {
+      flex: 1;
+      height: 60px;
+    }
+
+    /* 2-Column Matte Option Card Grid (Exact Match to Reference Image) */
+    /* 2-Column Matte Option Card Grid (Optimized for Easy Clicking) */
+    .rsq-radio-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    .rsq-radio-grid-2cols {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      align-items: stretch;
+    }
+
+    @media (max-width: 640px) {
+      .rsq-radio-grid-2cols {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Matte Option Card - Enhanced Clickability & Tactile Feedback */
+    .rsq-radio-card {
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding: 20px 24px;
+      min-height: 64px;
+      background-color: var(--card-bg);
+      border: 1.5px solid var(--card-border);
+      border-radius: 14px;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+      outline: none;
+    }
+
+    .rsq-radio-card:hover {
+      background-color: #26262B;
+      border-color: rgba(212, 162, 58, 0.55);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    }
+
+    /* Active Press Animation for Tactile Click Responsiveness */
+    .rsq-radio-card:active {
+      transform: translateY(0) scale(0.985);
+      transition-duration: 0.08s;
+    }
+
+    .rsq-radio-card input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+      pointer-events: none;
+    }
+
+    /* Radio Circle Indicator */
+    .rsq-radio-custom {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      border: 2px solid #555555;
+      margin-right: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: all 0.2s ease-in-out;
+      background: transparent;
+      pointer-events: none;
+    }
+
+    .rsq-radio-card:hover .rsq-radio-custom {
+      border-color: var(--primary);
+    }
+
+    .rsq-radio-custom::after {
+      content: '';
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #121212;
+      transform: scale(0);
+      transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .rsq-radio-text {
+      font-size: 16px;
+      font-weight: 600;
+      color: #FFFFFF;
+      line-height: 1.4;
+      pointer-events: none;
+    }
+
+    /* Card Selected State */
+    .rsq-radio-card.rsq-card-selected {
+      background-color: #252119;
+      border-color: var(--primary);
+      box-shadow: 0 0 22px rgba(212, 162, 58, 0.22), inset 0 0 12px rgba(212, 162, 58, 0.06);
+    }
+
+    .rsq-radio-card.rsq-card-selected .rsq-radio-custom {
+      border-color: var(--primary);
+      background-color: var(--primary);
+      box-shadow: 0 0 10px rgba(212, 162, 58, 0.5);
+    }
+
+    .rsq-radio-card.rsq-card-selected .rsq-radio-custom::after {
+      transform: scale(1);
+    }
+
+    .rsq-radio-card.rsq-card-selected .rsq-radio-text {
+      color: #FFFFFF;
+      font-weight: 700;
+    }
+
+    
+    /* Top & Bottom Previous Buttons per Step Panel */
+    .rsq-panel-top-nav {
+      display: flex;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .rsq-btn-back-top {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #1F1F1F;
+      color: #A1A1AA;
+      border: 1px solid #333333;
+      border-radius: 9999px;
+      padding: 7px 16px;
+      font-size: 13.5px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      user-select: none;
+    }
+
+    .rsq-btn-back-top:hover {
+      background: #26262B;
+      color: #FFFFFF;
+      border-color: var(--primary);
+      transform: translateX(-3px);
+    }
+
+    .rsq-step-bottom-actions {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      margin-top: 24px;
+      padding-top: 18px;
+      border-top: 1px solid #222222;
+    }
+
+    /* Field Errors */
+    .rsq-error-msg {
+      display: none;
+      color: #F87171;
+      font-size: 13.5px;
+      margin-top: 6px;
+      font-weight: 500;
+    }
+
+    .rsq-field-error .rsq-error-msg {
+      display: block;
+      animation: rsqShake 0.4s ease;
+    }
+
+    .rsq-field-error .rsq-input {
+      border-color: #F87171;
+      background-color: rgba(239, 68, 68, 0.05);
+    }
+
+    .rsq-field-error .rsq-radio-card {
+      border-color: rgba(248, 113, 113, 0.5);
+    }
+
+    /* Error Banner */
+    .rsq-submit-error-banner {
+      background: rgba(239, 68, 68, 0.12);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      color: #FCA5A5;
+      padding: 14px 18px;
+      border-radius: 12px;
+      margin-bottom: 24px;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* Actions Bottom Bar */
+    .rsq-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 36px;
+      padding-top: 24px;
+      border-top: 1px solid #222222;
+    }
+
+    .rsq-actions-right {
+      margin-left: auto;
+    }
+
+    .rsq-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 36px;
+      font-size: 15px;
+      font-weight: 700;
+      border-radius: 9999px;
+      cursor: pointer;
+      border: none;
+      transition: all 0.25s ease;
+      text-decoration: none;
+      line-height: 1.2;
+    }
+
+    .rsq-btn-primary {
+      background: var(--primary);
+      color: #121212 !important;
+      box-shadow: 0 4px 20px rgba(212, 162, 58, 0.3);
+    }
+
+    .rsq-btn-primary:hover {
+      background: var(--primary-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(212, 162, 58, 0.45);
+    }
+
+    .rsq-btn-secondary {
+      background: #1F1F1F;
+      color: var(--text-muted);
+      border: 1px solid #333333;
+    }
+
+    .rsq-btn-secondary:hover {
+      background: #262626;
+      color: #FFFFFF;
+      border-color: #555555;
+    }
+
+    .rsq-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    /* Spinner */
+    .rsq-spinner {
+      width: 18px;
+      height: 18px;
+      border: 2.5px solid rgba(24, 24, 24, 0.3);
+      border-radius: 50%;
+      border-top-color: #121212;
+      animation: rsq-spin 0.8s linear infinite;
+      margin-left: 10px;
+      display: inline-block;
+    }
+
+    /* Animations */
+    @keyframes rsq-spin { to { transform: rotate(360deg); } }
+    @keyframes rsqProgressShimmer { 0% { left: -100%; } 100% { left: 200%; } }
+    @keyframes rsqShake { 0%, 100% { transform: translateX(0); } 20%, 60% { transform: translateX(-6px); } 40%, 80% { transform: translateX(6px); } }
+
+    /* Result Screen */
+    .rsq-result-panel {
+      text-align: center;
+      padding: 30px 10px;
+    }
+
+    .rsq-result-icon-wrap {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px auto;
+    }
+
+    .rsq-icon-qualified {
+      background: rgba(212, 162, 58, 0.15);
+      border: 2px solid var(--primary);
+      color: var(--primary);
+    }
+
+    .rsq-icon-not-qualified {
+      background: rgba(255, 255, 255, 0.08);
+      border: 2px solid var(--text-muted);
+      color: var(--text-muted);
+    }
+
+    .rsq-result-title {
+      font-family: var(--font-heading);
+      font-size: 30px;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin: 0 0 10px 0;
+    }
+
+    .rsq-result-badge {
+      display: inline-block;
+      font-size: 14px;
+      font-weight: 700;
+      padding: 6px 20px;
+      border-radius: 9999px;
+      margin-bottom: 20px;
+    }
+
+    .rsq-badge-qualified {
+      background: rgba(212, 162, 58, 0.2);
+      color: var(--primary);
+      border: 1px solid rgba(212, 162, 58, 0.4);
+    }
+
+    .rsq-badge-not-qualified {
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text-muted);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .rsq-result-text {
+      font-size: 16px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      max-width: 580px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 768px) {
+      #rsq-form-container {
+        padding: 28px 18px;
+        border-radius: 18px;
+      }
+      .rsq-node-label { font-size: 10.5px; }
+      .rsq-node-circle { width: 36px; height: 36px; font-size: 12px; }
+      .rsq-timeline-track { top: 17px; }
+    }
+  
+    /* ==========================================================================
+       Mobile Optimization & Responsive Enhancements
+       ========================================================================== */
+    @media (max-width: 768px) {
+      .wp-site-header {
+        padding: 12px 20px;
+        margin-bottom: 20px;
+      }
+      .header-logo-img {
+        height: 36px;
+      }
+      .nav-btn-home {
+        padding: 8px 16px;
+        font-size: 13px;
+      }
+      #rsq-form-container {
+        padding: 24px 18px;
+        margin: 10px auto;
+        border-radius: 16px;
+      }
+      .rsq-section-heading {
+        font-size: 22px !important;
+      }
+      .rsq-section-subheading {
+        font-size: 14px !important;
+        margin-bottom: 24px !important;
+      }
+      .rsq-label {
+        font-size: 15px !important;
+      }
+      .rsq-radio-grid-2cols {
+        grid-template-columns: 1fr !important;
+      }
+      .rsq-radio-card {
+        padding: 16px 18px !important;
+        min-height: 56px !important;
+      }
+      .rsq-radio-text {
+        font-size: 15px !important;
+      }
+      .rsq-radio-custom {
+        width: 22px !important;
+        height: 22px !important;
+        margin-right: 14px !important;
+      }
+      .rsq-node-circle {
+        width: 36px !important;
+        height: 36px !important;
+        font-size: 12px !important;
+      }
+      .rsq-node-label {
+        font-size: 10px !important;
+      }
+      .rsq-timeline-track {
+        top: 17px !important;
+        left: 24px !important;
+        right: 24px !important;
+      }
+      .rsq-country-menu {
+        width: 280px !important;
+        max-width: 85vw !important;
+        left: 0 !important;
+      }
+      /* Prevent iOS Safari auto-zoom on focus */
+      .rsq-input, 
+      .rsq-country-search-input {
+        font-size: 16px !important;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .wp-site-header {
+        padding: 10px 14px;
+      }
+      .header-logo-img {
+        height: 30px;
+      }
+      #rsq-form-container {
+        padding: 18px 14px;
+        border-radius: 12px;
+      }
+      .rsq-section-heading {
+        font-size: 20px !important;
+      }
+      .rsq-timeline-nodes {
+        gap: 4px;
+      }
+      .rsq-node-label {
+        display: none; /* Clean look on small screens */
+      }
+      .rsq-node-circle {
+        width: 32px !important;
+        height: 32px !important;
+        font-size: 11px !important;
+      }
+      .rsq-timeline-track {
+        top: 15px !important;
+        left: 16px !important;
+        right: 16px !important;
+      }
+      .rsq-btn {
+        width: 100% !important;
+        justify-content: center !important;
+        padding: 14px 20px !important;
+      }
+      .rsq-btn-back-top {
+        padding: 6px 14px !important;
+        font-size: 12.5px !important;
+      }
+      .rsq-actions {
+        flex-direction: column-reverse !important;
+        gap: 12px !important;
+      }
+      .rsq-actions-right {
+        width: 100% !important;
+        margin-left: 0 !important;
+      }
+      .rsq-result-title {
+        font-size: 24px !important;
+      }
+      .rsq-result-text {
+        font-size: 16px !important;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Top Header Navigation -->
+  <header class="wp-site-header">
+    <div class="wp-header-container">
+      <a href="https://reachskyline.com/" class="header-logo-link" title="Reach Skyline Home">
+        <img src="https://res.cloudinary.com/dlttxqrod/image/upload/v1788758367/New-Logo-White-text-1536x915-1-300x179_mayw3z.png" alt="Reach Skyline Logo" class="header-logo-img">
+      </a>
+      <div>
+        <a href="https://reachskyline.com/" class="nav-btn-home">
+          Home
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Reach Skyline 20-Question Lead Qualification Assessment -->
+  <div id="rsq-form-container">
+    
+    <!-- Step-by-Step Horizontal Timeline Header -->
+    <div class="rsq-header" id="rsq-header">
+      <div class="rsq-timeline-container">
+        <!-- Connecting Line Track -->
+        <div class="rsq-timeline-track">
+          <div class="rsq-timeline-line-fill" id="rsq-progress-fill" style="width: 0%;"></div>
+        </div>
+
+        <!-- 5 Timeline Nodes -->
+        <div class="rsq-timeline-nodes">
+          <div class="rsq-timeline-node rsq-node-active" data-node="1">
+            <div class="rsq-node-circle">
+              <span class="rsq-node-num">1</span>
+              <span class="rsq-node-check">✓</span>
+            </div>
+            <div class="rsq-node-label">Contact Details</div>
+          </div>
+
+          <div class="rsq-timeline-node" data-node="2">
+            <div class="rsq-node-circle">
+              <span class="rsq-node-num">2</span>
+              <span class="rsq-node-check">✓</span>
+            </div>
+            <div class="rsq-node-label">Industry & Metrics</div>
+          </div>
+
+          <div class="rsq-timeline-node" data-node="3">
+            <div class="rsq-node-circle">
+              <span class="rsq-node-num">3</span>
+              <span class="rsq-node-check">✓</span>
+            </div>
+            <div class="rsq-node-label">Growth Goals</div>
+          </div>
+
+          <div class="rsq-timeline-node" data-node="4">
+            <div class="rsq-node-circle">
+              <span class="rsq-node-num">4</span>
+              <span class="rsq-node-check">✓</span>
+            </div>
+            <div class="rsq-node-label">Budget & Timeline</div>
+          </div>
+
+          <div class="rsq-timeline-node" data-node="5">
+            <div class="rsq-node-circle">
+              <span class="rsq-node-num">5</span>
+              <span class="rsq-node-check">✓</span>
+            </div>
+            <div class="rsq-node-label">Final Evaluation</div>
+          </div>
+        </div>
+      </div>
+      
+      <span id="rsq-step-text" style="display:none;">Step 1 of 5</span>
+      <span id="rsq-step-title" style="display:none;">Contact & Business Identity</span>
+    </div>
+
+    <form id="rsq-multi-step-form" novalidate>
+      
+      <!-- STEP 1: Contact & Business Identity (Questions 1 - 5 in Text Fields) -->
+      <div class="rsq-step-panel rsq-active" data-step="1">
+        <h2 class="rsq-section-heading">Contact & Business Identity</h2>
+        <p class="rsq-section-subheading">Please enter your contact details below to begin the qualification assessment.</p>
+
+        <!-- Q1 -->
+        <div class="rsq-field-group">
+          <label class="rsq-label" for="rsq_full_name"><span class="rsq-q-number">1.</span> Full Name <span class="rsq-required-star">*</span></label>
+          <input type="text" class="rsq-input" id="rsq_full_name" name="full_name" placeholder="John Doe">
+          <div class="rsq-error-msg">Please enter your full name.</div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="rsq-field-group">
+          <label class="rsq-label" for="rsq_work_email"><span class="rsq-q-number">2.</span> Work Email <span class="rsq-required-star">*</span></label>
+          <input type="email" class="rsq-input" id="rsq_work_email" name="work_email" placeholder="john@company.com">
+          <div class="rsq-error-msg">Please enter a valid work email address.</div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="rsq-field-group">
+          <label class="rsq-label" for="rsq_phone"><span class="rsq-q-number">3.</span> Phone / WhatsApp <span class="rsq-required-star">*</span></label>
+          <div class="rsq-phone-wrapper">
+            <!-- Custom Country Selector Dropdown -->
+            <div class="rsq-country-dropdown" id="rsq-country-dropdown">
+              <button type="button" class="rsq-country-btn" id="rsq-country-btn" aria-expanded="false" title="Select Country Code">
+                <span class="rsq-country-flag" id="rsq-country-selected-flag">🇮🇳</span>
+                <span class="rsq-country-code" id="rsq-country-selected-code">+91</span>
+                <span class="rsq-country-arrow">▼</span>
+              </button>
+              <div class="rsq-country-menu" id="rsq-country-menu" style="display:none;">
+                <div class="rsq-country-search-wrap">
+                  <input type="text" class="rsq-country-search-input" id="rsq-country-search" placeholder="Search country (e.g. India)..." autocomplete="off">
+                </div>
+                <div class="rsq-country-list" id="rsq-country-list">
+                  <!-- Populated via JS -->
+                </div>
+              </div>
+            </div>
+            <input type="hidden" name="country_code" id="rsq_country_code" value="+91">
+            <!-- 10-Digit Phone Number Input -->
+            <input type="tel" class="rsq-input rsq-phone-input" id="rsq_phone" name="phone" placeholder="9876543210" maxlength="10" inputmode="numeric" pattern="[0-9]{10}">
+          </div>
+          <div class="rsq-error-msg" id="rsq-phone-error">Please enter a valid 10-digit phone number.</div>
+        </div>
+
+        <!-- Q4 -->
+        <div class="rsq-field-group">
+          <label class="rsq-label" for="rsq_company_name"><span class="rsq-q-number">4.</span> Company / Brand Name <span class="rsq-required-star">*</span></label>
+          <input type="text" class="rsq-input" id="rsq_company_name" name="company_name" placeholder="Acme Corp">
+          <div class="rsq-error-msg">Please enter your company or brand name.</div>
+        </div>
+
+        <!-- Q5 -->
+        <div class="rsq-field-group">
+          <label class="rsq-label" for="rsq_website"><span class="rsq-q-number">5.</span> Website / LinkedIn <span style="font-weight:400; color:#A1A1AA;">(Optional)</span></label>
+          <input type="text" class="rsq-input" id="rsq_website" name="website" placeholder="https://company.com or linkedin.com/in/profile">
+        </div>
+      </div>
+
+      <!-- STEP 2: Q6 Industry -->
+      <div class="rsq-step-panel" data-step="2">
+        <div class="rsq-panel-top-nav">
+          <button type="button" class="rsq-btn-back-top rsq-btn-back-action" title="Go to previous question">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            <span>Previous Question</span>
+          </button>
+        </div>
+
+        <h2 class="rsq-section-heading">Industry & Baseline Metrics</h2>
+        <p class="rsq-section-subheading">Select your industry option below.</p>
+
+        <!-- Q6 -->
+        <div class="rsq-field-group">
+          <label class="rsq-label"><span class="rsq-q-number">6.</span> What industry are you in? <span class="rsq-required-star">*</span></label>
+          <div class="rsq-radio-grid rsq-radio-grid-2cols">
+            <label class="rsq-radio-card"><input type="radio" name="industry" value="SaaS / Technology"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">SaaS / Technology</span></label>
+            <label class="rsq-radio-card"><input type="radio" name="industry" value="E-commerce"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">E-commerce</span></label>
+            <label class="rsq-radio-card"><input type="radio" name="industry" value="Professional Services"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">Professional Services</span></label>
+            <label class="rsq-radio-card"><input type="radio" name="industry" value="Agency / Consulting"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">Agency / Consulting</span></label>
+            <label class="rsq-radio-card"><input type="radio" name="industry" value="Real Estate"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">Real Estate</span></label>
+            <label class="rsq-radio-card"><input type="radio" name="industry" value="Education"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">Education</span></label>
+            <label class="rsq-radio-card"><input type="radio" name="industry" value="Healthcare"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">Healthcare</span></label>
+            <label class="rsq-radio-card"><input type="radio" name="industry" value="Finance"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">Finance</span></label>
+            <label class="rsq-radio-card"><input type="radio" name="industry" value="Manufacturing"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">Manufacturing</span></label>
+            <label class="rsq-radio-card"><input type="radio" name="industry" value="Other"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">Other</span></label>
+          </div>
+          <div class="rsq-error-msg">Please select an industry.</div>
+        </div>
+      
+        <div class="rsq-step-bottom-actions">
+          <button type="button" class="rsq-btn rsq-btn-secondary rsq-btn-back-action">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px;"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            Previous Question
+          </button>
+        </div>
+      </div>
+
+      <!-- STEP 3: Q7 Monthly Revenue -->
+      <div class="rsq-step-panel" data-step="3">
+        <div class="rsq-panel-top-nav">
+          <button type="button" class="rsq-btn-back-top rsq-btn-back-action" title="Go to previous question">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            <span>Previous Question</span>
+          </button>
+        </div>
+
+        <h2 class="rsq-section-heading">Industry & Baseline Metrics</h2>
+        <p class="rsq-section-subheading">Select your approximate monthly revenue below.</p>
+
+        <!-- Q7 -->
+        <div class="rsq-field-group">
+          <label class="rsq-label"><span class="rsq-q-number">7.</span> What is your approximate average monthly revenue? <span class="rsq-required-star">*</span></label>
+          <div class="rsq-radio-grid rsq-radio-grid-2cols">
+            <label class="rsq-radio-card"><input type="radio" name="monthly_revenue" value="Below ₹1 lakh"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">Below ₹1 lakh</span></label>
+            <label class="rsq-radio-card"><input type="radio" name="monthly_revenue" value="₹1–5 lakh"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">₹1–5 lakh</span></label>
+            <label class="rsq-radio-card"><input type="radio" name="monthly_revenue" value="₹5–10 lakh"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">₹5–10 lakh</span></label>
+            <label class="rsq-radio-card"><input type="radio" name="monthly_revenue" value="₹10–25 lakh"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">₹10–25 lakh</span></label>
+            <label class="rsq-radio-card"><input type="radio" name="monthly_revenue" value="₹25–50 lakh"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">₹25–50 lakh</span></label>
+            <label class="rsq-radio-card"><input type="radio" name="monthly_revenue" value="₹50 lakh–₹1 crore"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">₹50 lakh–₹1 crore</span></label>
+            <label class="rsq-radio-card"><input type="radio" name="monthly_revenue" value="₹1 crore+"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">₹1 crore+</span></label>
+            <label class="rsq-radio-card"><input type="radio" name="monthly_revenue" value="Prefer not to disclose"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">Prefer not to disclose</span></label>
+          </div>
+          <div class="rsq-error-msg">Please select an average monthly revenue option.</div>
+        </div>
+      
+        <div class="rsq-step-bottom-actions">
+          <button type="button" class="rsq-btn rsq-btn-secondary rsq-btn-back-action">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px;"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            Previous Question
+          </button>
+        </div>
+      </div>
+
+      <!-- STEP 4: Q8 Annual Revenue -->
+      <div class="rsq-step-panel" data-step="4">
+        <div class="rsq-panel-top-nav">
+          <button type="button" class="rsq-btn-back-top rsq-btn-back-action" title="Go to previous question">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            <span>Previous Question</span>
+          </button>
+        </div>
+
+        <h2 class="rsq-section-heading">Industry & Baseline Metrics</h2>
+        <p class="rsq-section-subheading">Select your 12-month revenue below.</p>
+
+        <!-- Q8 -->
+        <div class="rsq-field-group">
+          <label class="rsq-label"><span class="rsq-q-number">8.</span> What was your approximate revenue in the last 12 months? <span class="rsq-required-star">*</span></label>
+          <div class="rsq-radio-grid rsq-radio-grid-2cols">
+            <label class="rsq-radio-card"><input type="radio" name="annual_revenue" value="Below ₹10 lakh"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">Below ₹10 lakh</span></label>
+            <label class="rsq-radio-card"><input type="radio" name="annual_revenue" value="₹10–50 lakh"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">₹10–50 lakh</span></label>
+            <label class="rsq-radio-card"><input type="radio" name="annual_revenue" value="₹50 lakh–₹1 crore"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">₹50 lakh–₹1 crore</span></label>
+            <label class="rsq-radio-card"><input type="radio" name="annual_revenue" value="₹1–5 crore"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">₹1–5 crore</span></label>
+            <label class="rsq-radio-card"><input type="radio" name="annual_revenue" value="₹5–10 crore"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">₹5–10 crore</span></label>
+            <label class="rsq-radio-card"><input type="radio" name="annual_revenue" value="₹10 crore+"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">₹10 crore+</span></label>
+            <label class="rsq-radio-card"><input type="radio" name="annual_revenue" value="Prefer not to disclose"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">Prefer not to disclose</span></label>
+          </div>
+          <div class="rsq-error-msg">Please select your annual revenue.</div>
+        </div>
+      
+        <div class="rsq-step-bottom-actions">
+          <button type="button" class="rsq-btn rsq-btn-secondary rsq-btn-back-action">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px;"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            Previous Question
+          </button>
+        </div>
+      </div>
+
+      <!-- STEP 5: Q9 Marketing Spend -->
+      <div class="rsq-step-panel" data-step="5">
+        <div class="rsq-panel-top-nav">
+          <button type="button" class="rsq-btn-back-top rsq-btn-back-action" title="Go to previous question">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            <span>Previous Question</span>
+          </button>
+        </div>
+
+        <h2 class="rsq-section-heading">Industry & Baseline Metrics</h2>
+        <p class="rsq-section-subheading">Select your monthly customer acquisition spend below.</p>
+
+        <!-- Q9 -->
+        <div class="rsq-field-group">
+          <label class="rsq-label"><span class="rsq-q-number">9.</span> What is your current monthly marketing / customer acquisition spend? <span class="rsq-required-star">*</span></label>
+          <div class="rsq-radio-grid rsq-radio-grid-2cols">
+            <label class="rsq-radio-card"><input type="radio" name="marketing_spend" value="Below ₹25,000"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">Below ₹25,000</span></label>
+            <label class="rsq-radio-card"><input type="radio" name="marketing_spend" value="₹25,000–₹50,000"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">₹25,000–₹50,000</span></label>
+            <label class="rsq-radio-card"><input type="radio" name="marketing_spend" value="₹50,000–₹1 lakh"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">₹50,000–₹1 lakh</span></label>
+            <label class="rsq-radio-card"><input type="radio" name="marketing_spend" value="₹1–5 lakh"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">₹1–5 lakh</span></label>
+            <label class="rsq-radio-card"><input type="radio" name="marketing_spend" value="₹5–10 lakh"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">₹5–10 lakh</span></label>
+            <label class="rsq-radio-card"><input type="radio" name="marketing_spend" value="₹10 lakh+"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">₹10 lakh+</span></label>
+            <label class="rsq-radio-card"><input type="radio" name="marketing_spend" value="We currently don't spend on marketing"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">We currently don't spend on marketing</span></label>
+          </div>
+          <div class="rsq-error-msg">Please select your monthly marketing spend.</div>
+        </div>
+      
+        <div class="rsq-step-bottom-actions">
+          <button type="button" class="rsq-btn rsq-btn-secondary rsq-btn-back-action">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px;"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            Previous Question
+          </button>
+        </div>
+      </div>
+
+      <!-- STEP 6: Q10 Growth Goal -->
+      <div class="rsq-step-panel" data-step="6">
+        <div class="rsq-panel-top-nav">
+          <button type="button" class="rsq-btn-back-top rsq-btn-back-action" title="Go to previous question">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            <span>Previous Question</span>
+          </button>
+        </div>
+
+        <h2 class="rsq-section-heading">Growth Goals & Challenges</h2>
+        <p class="rsq-section-subheading">Tell us where you want to take your business.</p>
+
+        <!-- Q10 -->
+        <div class="rsq-field-group">
+          <label class="rsq-label"><span class="rsq-q-number">10.</span> What is your primary growth goal? <span class="rsq-required-star">*</span></label>
+          <div class="rsq-radio-grid rsq-radio-grid-2cols">
+            <label class="rsq-radio-card"><input type="radio" name="growth_goal" value="Generate more qualified leads"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">Generate more qualified leads</span></label>
+            <label class="rsq-radio-card"><input type="radio" name="growth_goal" value="Scale e-commerce online revenue"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">Scale e-commerce online revenue</span></label>
+            <label class="rsq-radio-card"><input type="radio" name="growth_goal" value="Improve conversion rate"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">Improve website conversion rate</span></label>
+            <label class="rsq-radio-card"><input type="radio" name="growth_goal" value="Build an automated sales funnel"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">Build an automated sales funnel</span></label>
+            <label class="rsq-radio-card"><input type="radio" name="growth_goal" value="Expand into new market segments"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">Expand into new market segments</span></label>
+            <label class="rsq-radio-card"><input type="radio" name="growth_goal" value="Establish market dominance & brand authority"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">Build brand authority & dominance</span></label>
+          </div>
+          <div class="rsq-error-msg">Please select your primary growth goal.</div>
+        </div>
+      
+        <div class="rsq-step-bottom-actions">
+          <button type="button" class="rsq-btn rsq-btn-secondary rsq-btn-back-action">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px;"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            Previous Question
+          </button>
+        </div>
+      </div>
+
+      <!-- STEP 7: Q11 Revenue Target -->
+      <div class="rsq-step-panel" data-step="7">
+        <div class="rsq-panel-top-nav">
+          <button type="button" class="rsq-btn-back-top rsq-btn-back-action" title="Go to previous question">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            <span>Previous Question</span>
+          </button>
+        </div>
+
+        <h2 class="rsq-section-heading">Growth Goals & Challenges</h2>
+        <p class="rsq-section-subheading">Share your target for the next 12 months.</p>
+
+        <!-- Q11 -->
+        <div class="rsq-field-group">
+          <label class="rsq-label"><span class="rsq-q-number">11.</span> What revenue target are you aiming for over the next 12 months? <span class="rsq-required-star">*</span></label>
+          <div class="rsq-radio-grid rsq-radio-grid-2cols">
+            <label class="rsq-radio-card"><input type="radio" name="revenue_target" value="Below ₹25 Lakh"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">Below ₹25 Lakh</span></label>
+            <label class="rsq-radio-card"><input type="radio" name="revenue_target" value="₹25 Lakh – ₹50 Lakh"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">₹25 Lakh – ₹50 Lakh</span></label>
+            <label class="rsq-radio-card"><input type="radio" name="revenue_target" value="₹50 Lakh – ₹1 Crore"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">₹50 Lakh – ₹1 Crore</span></label>
+            <label class="rsq-radio-card"><input type="radio" name="revenue_target" value="₹1 Crore – ₹5 Crore"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">₹1 Crore – ₹5 Crore</span></label>
+            <label class="rsq-radio-card"><input type="radio" name="revenue_target" value="₹5 Crore – ₹10 Crore"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">₹5 Crore – ₹10 Crore</span></label>
+            <label class="rsq-radio-card"><input type="radio" name="revenue_target" value="₹10 Crore+"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">₹10 Crore+</span></label>
+          </div>
+          <div class="rsq-error-msg">Please select your 12-month revenue target.</div>
+        </div>
+      
+        <div class="rsq-step-bottom-actions">
+          <button type="button" class="rsq-btn rsq-btn-secondary rsq-btn-back-action">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px;"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            Previous Question
+          </button>
+        </div>
+      </div>
+
+      <!-- STEP 8: Q12 Additional Revenue -->
+      <div class="rsq-step-panel" data-step="8">
+        <div class="rsq-panel-top-nav">
+          <button type="button" class="rsq-btn-back-top rsq-btn-back-action" title="Go to previous question">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            <span>Previous Question</span>
+          </button>
+        </div>
+
+        <h2 class="rsq-section-heading">Growth Goals & Challenges</h2>
+        <p class="rsq-section-subheading">How much additional monthly revenue would make this engagement valuable?</p>
+
+        <!-- Q12 -->
+        <div class="rsq-field-group">
+          <label class="rsq-label"><span class="rsq-q-number">12.</span> How much additional monthly revenue would make this engagement highly valuable for your business? <span class="rsq-required-star">*</span></label>
+          <div class="rsq-radio-grid rsq-radio-grid-2cols">
+            <label class="rsq-radio-card"><input type="radio" name="additional_revenue" value="₹1–5 lakh"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">₹1–5 lakh</span></label>
+            <label class="rsq-radio-card"><input type="radio" name="additional_revenue" value="₹5–10 lakh"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">₹5–10 lakh</span></label>
+            <label class="rsq-radio-card"><input type="radio" name="additional_revenue" value="₹10–25 lakh"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">₹10–25 lakh</span></label>
+            <label class="rsq-radio-card"><input type="radio" name="additional_revenue" value="₹25–50 lakh"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">₹25–50 lakh</span></label>
+            <label class="rsq-radio-card"><input type="radio" name="additional_revenue" value="₹50 lakh+"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">₹50 lakh+</span></label>
+            <label class="rsq-radio-card"><input type="radio" name="additional_revenue" value="Not sure yet"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">Not sure yet</span></label>
+          </div>
+          <div class="rsq-error-msg">Please select an option.</div>
+        </div>
+      
+        <div class="rsq-step-bottom-actions">
+          <button type="button" class="rsq-btn rsq-btn-secondary rsq-btn-back-action">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px;"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            Previous Question
+          </button>
+        </div>
+      </div>
+
+      <!-- STEP 9: Q13 Bottleneck -->
+      <div class="rsq-step-panel" data-step="9">
+        <div class="rsq-panel-top-nav">
+          <button type="button" class="rsq-btn-back-top rsq-btn-back-action" title="Go to previous question">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            <span>Previous Question</span>
+          </button>
+        </div>
+
+        <h2 class="rsq-section-heading">Growth Goals & Challenges</h2>
+        <p class="rsq-section-subheading">Select your primary growth bottleneck.</p>
+
+        <!-- Q13 -->
+        <div class="rsq-field-group">
+          <label class="rsq-label"><span class="rsq-q-number">13.</span> What is currently your biggest bottleneck preventing you from reaching that target? <span class="rsq-required-star">*</span></label>
+          <div class="rsq-radio-grid rsq-radio-grid-2cols">
+            <label class="rsq-radio-card"><input type="radio" name="growth_problem" value="Inconsistent lead generation / sales pipeline"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">Inconsistent lead generation / sales pipeline</span></label>
+            <label class="rsq-radio-card"><input type="radio" name="growth_problem" value="High Customer Acquisition Cost (CAC)"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">High Customer Acquisition Cost (CAC)</span></label>
+            <label class="rsq-radio-card"><input type="radio" name="growth_problem" value="Low landing page / website conversion rate"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">Low landing page conversion rate</span></label>
+            <label class="rsq-radio-card"><input type="radio" name="growth_problem" value="Inability to scale ad spend profitably"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">Inability to scale ad spend profitably</span></label>
+            <label class="rsq-radio-card"><input type="radio" name="growth_problem" value="Lack of clear marketing strategy / funnel system"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">Lack of clear marketing strategy / funnel</span></label>
+            <label class="rsq-radio-card"><input type="radio" name="growth_problem" value="Lack of internal team / execution bandwidth"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">Lack of internal marketing bandwidth</span></label>
+          </div>
+          <div class="rsq-error-msg">Please select your primary bottleneck.</div>
+        </div>
+      
+        <div class="rsq-step-bottom-actions">
+          <button type="button" class="rsq-btn rsq-btn-secondary rsq-btn-back-action">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px;"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            Previous Question
+          </button>
+        </div>
+      </div>
+
+      <!-- STEP 10: Q14 Previous Investment -->
+      <div class="rsq-step-panel" data-step="10">
+        <div class="rsq-panel-top-nav">
+          <button type="button" class="rsq-btn-back-top rsq-btn-back-action" title="Go to previous question">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            <span>Previous Question</span>
+          </button>
+        </div>
+
+        <h2 class="rsq-section-heading">Budget & Decision Readiness</h2>
+        <p class="rsq-section-subheading">Share your past agency experience.</p>
+
+        <!-- Q14 -->
+        <div class="rsq-field-group">
+          <label class="rsq-label"><span class="rsq-q-number">14.</span> Have you previously invested in an agency, consultant, marketing team, or growth partner? <span class="rsq-required-star">*</span></label>
+          <div class="rsq-radio-grid rsq-radio-grid-2cols">
+            <label class="rsq-radio-card"><input type="radio" name="previous_investment" value="Yes, currently working with one"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">Yes, currently working with one</span></label>
+            <label class="rsq-radio-card"><input type="radio" name="previous_investment" value="Yes, worked with agencies in the past"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">Yes, worked with agencies in the past</span></label>
+            <label class="rsq-radio-card"><input type="radio" name="previous_investment" value="No, built everything in-house"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">No, built everything in-house</span></label>
+            <label class="rsq-radio-card"><input type="radio" name="previous_investment" value="No, this will be our first time hiring an agency"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">No, this is our first time hiring an agency</span></label>
+          </div>
+          <div class="rsq-error-msg">Please select an option.</div>
+        </div>
+      
+        <div class="rsq-step-bottom-actions">
+          <button type="button" class="rsq-btn rsq-btn-secondary rsq-btn-back-action">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px;"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            Previous Question
+          </button>
+        </div>
+      </div>
+
+      <!-- STEP 11: Q15 Monthly Budget -->
+      <div class="rsq-step-panel" data-step="11">
+        <div class="rsq-panel-top-nav">
+          <button type="button" class="rsq-btn-back-top rsq-btn-back-action" title="Go to previous question">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            <span>Previous Question</span>
+          </button>
+        </div>
+
+        <h2 class="rsq-section-heading">Budget & Decision Readiness</h2>
+        <p class="rsq-section-subheading">Share your approximate monthly budget.</p>
+
+        <!-- Q15 -->
+        <div class="rsq-field-group">
+          <label class="rsq-label"><span class="rsq-q-number">15.</span> What is your approximate monthly budget for solving this growth bottleneck? <span class="rsq-required-star">*</span></label>
+          <div class="rsq-radio-grid rsq-radio-grid-2cols">
+            <label class="rsq-radio-card"><input type="radio" name="budget" value="Below ₹50,000/month"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">Below ₹50,000/month</span></label>
+            <label class="rsq-radio-card"><input type="radio" name="budget" value="₹50,000–₹1 lakh/month"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">₹50,000–₹1 lakh/month</span></label>
+            <label class="rsq-radio-card"><input type="radio" name="budget" value="₹1–3 lakh/month"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">₹1–3 lakh/month</span></label>
+            <label class="rsq-radio-card"><input type="radio" name="budget" value="₹3–5 lakh/month"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">₹3–5 lakh/month</span></label>
+            <label class="rsq-radio-card"><input type="radio" name="budget" value="₹5 lakh+/month"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">₹5 lakh+/month</span></label>
+            <label class="rsq-radio-card"><input type="radio" name="budget" value="I'm willing to invest based on ROI"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">Willing to invest based on ROI</span></label>
+          </div>
+          <div class="rsq-error-msg">Please select your budget range.</div>
+        </div>
+      
+        <div class="rsq-step-bottom-actions">
+          <button type="button" class="rsq-btn rsq-btn-secondary rsq-btn-back-action">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px;"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            Previous Question
+          </button>
+        </div>
+      </div>
+
+      <!-- STEP 12: Q16 Start Timeline -->
+      <div class="rsq-step-panel" data-step="12">
+        <div class="rsq-panel-top-nav">
+          <button type="button" class="rsq-btn-back-top rsq-btn-back-action" title="Go to previous question">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            <span>Previous Question</span>
+          </button>
+        </div>
+
+        <h2 class="rsq-section-heading">Budget & Decision Readiness</h2>
+        <p class="rsq-section-subheading">How soon are you looking to start?</p>
+
+        <!-- Q16 -->
+        <div class="rsq-field-group">
+          <label class="rsq-label"><span class="rsq-q-number">16.</span> How soon are you looking to start / implement growth strategies? <span class="rsq-required-star">*</span></label>
+          <div class="rsq-radio-grid rsq-radio-grid-2cols">
+            <label class="rsq-radio-card"><input type="radio" name="start_timeline" value="Immediately (Within 1-2 weeks)"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">Immediately (Within 1-2 weeks)</span></label>
+            <label class="rsq-radio-card"><input type="radio" name="start_timeline" value="Within 30 days"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">Within 30 days</span></label>
+            <label class="rsq-radio-card"><input type="radio" name="start_timeline" value="Within 60–90 days"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">Within 60–90 days</span></label>
+            <label class="rsq-radio-card"><input type="radio" name="start_timeline" value="Just researching options for the future"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">Just researching for future</span></label>
+          </div>
+          <div class="rsq-error-msg">Please select your timeline.</div>
+        </div>
+      
+        <div class="rsq-step-bottom-actions">
+          <button type="button" class="rsq-btn rsq-btn-secondary rsq-btn-back-action">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px;"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            Previous Question
+          </button>
+        </div>
+      </div>
+
+      <!-- STEP 13: Q17 Decision Maker -->
+      <div class="rsq-step-panel" data-step="13">
+        <div class="rsq-panel-top-nav">
+          <button type="button" class="rsq-btn-back-top rsq-btn-back-action" title="Go to previous question">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            <span>Previous Question</span>
+          </button>
+        </div>
+
+        <h2 class="rsq-section-heading">Budget & Decision Readiness</h2>
+        <p class="rsq-section-subheading">Who will be involved in the final decision?</p>
+
+        <!-- Q17 -->
+        <div class="rsq-field-group">
+          <label class="rsq-label"><span class="rsq-q-number">17.</span> Who will be involved in the final decision? <span class="rsq-required-star">*</span></label>
+          <div class="rsq-radio-grid">
+            <label class="rsq-radio-card"><input type="radio" name="decision_maker" value="Sole decision maker (I make the final call)"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">Sole decision maker (I make the final call)</span></label>
+            <label class="rsq-radio-card"><input type="radio" name="decision_maker" value="Co-founders / Business Partners decision"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">Co-founders / Business Partners decision</span></label>
+            <label class="rsq-radio-card"><input type="radio" name="decision_maker" value="Board of Directors / Key Stakeholders approval"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">Board of Directors / Key Stakeholders approval</span></label>
+            <label class="rsq-radio-card"><input type="radio" name="decision_maker" value="Marketing / Growth Team committee"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">Marketing / Growth Team committee</span></label>
+          </div>
+          <div class="rsq-error-msg">Please select your decision-making structure.</div>
+        </div>
+      
+        <div class="rsq-step-bottom-actions">
+          <button type="button" class="rsq-btn rsq-btn-secondary rsq-btn-back-action">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px;"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            Previous Question
+          </button>
+        </div>
+      </div>
+
+      <!-- STEP 14: Q18 Investment Readiness -->
+      <div class="rsq-step-panel" data-step="14">
+        <div class="rsq-panel-top-nav">
+          <button type="button" class="rsq-btn-back-top rsq-btn-back-action" title="Go to previous question">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            <span>Previous Question</span>
+          </button>
+        </div>
+
+        <h2 class="rsq-section-heading">Final Qualification Questions</h2>
+        <p class="rsq-section-subheading">Investment readiness evaluation.</p>
+
+        <!-- Q18 -->
+        <div class="rsq-field-group">
+          <label class="rsq-label"><span class="rsq-q-number">18.</span> If we identify an opportunity capable of generating significant additional revenue, are you prepared to invest to implement it? <span class="rsq-required-star">*</span></label>
+          <div class="rsq-radio-grid">
+            <label class="rsq-radio-card"><input type="radio" name="investment_readiness" value="Yes, fully prepared to invest"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">Yes, fully prepared to invest</span></label>
+            <label class="rsq-radio-card"><input type="radio" name="investment_readiness" value="Potentially, depending on the ROI & strategy"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">Potentially, depending on the ROI & strategy</span></label>
+            <label class="rsq-radio-card"><input type="radio" name="investment_readiness" value="No, limited investment capacity currently"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">No, limited investment capacity currently</span></label>
+          </div>
+          <div class="rsq-error-msg">Please answer this question to proceed.</div>
+        </div>
+      
+        <div class="rsq-step-bottom-actions">
+          <button type="button" class="rsq-btn rsq-btn-secondary rsq-btn-back-action">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px;"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            Previous Question
+          </button>
+        </div>
+      </div>
+
+      <!-- STEP 15: Q19 Partner Reason -->
+      <div class="rsq-step-panel" data-step="15">
+        <div class="rsq-panel-top-nav">
+          <button type="button" class="rsq-btn-back-top rsq-btn-back-action" title="Go to previous question">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            <span>Previous Question</span>
+          </button>
+        </div>
+
+        <h2 class="rsq-section-heading">Final Qualification Questions</h2>
+        <p class="rsq-section-subheading">What would make Reach Skyline your ideal partner?</p>
+
+        <!-- Q19 -->
+        <div class="rsq-field-group">
+          <label class="rsq-label"><span class="rsq-q-number">19.</span> What would make Reach Skyline the ideal growth partner for your company? <span class="rsq-required-star">*</span></label>
+          <div class="rsq-radio-grid rsq-radio-grid-2cols">
+            <label class="rsq-radio-card"><input type="radio" name="partner_reason" value="Proven track record of high ROI & performance execution"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">Proven track record of high ROI & execution</span></label>
+            <label class="rsq-radio-card"><input type="radio" name="partner_reason" value="End-to-end management (Strategy + Ads + Funnels)"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">End-to-end management (Strategy + Ads + Funnel)</span></label>
+            <label class="rsq-radio-card"><input type="radio" name="partner_reason" value="Transparent data-driven reporting & accountability"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">Transparent reporting & accountability</span></label>
+            <label class="rsq-radio-card"><input type="radio" name="partner_reason" value="Speed of execution & rapid scaling capacity"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">Speed of execution & rapid scaling</span></label>
+            <label class="rsq-radio-card"><input type="radio" name="partner_reason" value="Strategic partnership & dedicated growth team"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">Strategic partnership & dedicated team</span></label>
+          </div>
+          <div class="rsq-error-msg">Please select what would make Reach Skyline the ideal partner.</div>
+        </div>
+      
+        <div class="rsq-step-bottom-actions">
+          <button type="button" class="rsq-btn rsq-btn-secondary rsq-btn-back-action">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px;"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            Previous Question
+          </button>
+        </div>
+      </div>
+
+      <!-- STEP 16: Q20 Primary Expectation -->
+      <div class="rsq-step-panel" data-step="16">
+        <div class="rsq-panel-top-nav">
+          <button type="button" class="rsq-btn-back-top rsq-btn-back-action" title="Go to previous question">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            <span>Previous Question</span>
+          </button>
+        </div>
+
+        <h2 class="rsq-section-heading">Final Qualification Questions</h2>
+        <p class="rsq-section-subheading">Final question before score calculation.</p>
+
+        <!-- Q20 -->
+        <div class="rsq-field-group">
+          <label class="rsq-label"><span class="rsq-q-number">20.</span> What is your primary expectation from partnering with Reach Skyline? <span class="rsq-required-star">*</span></label>
+          <div class="rsq-radio-grid rsq-radio-grid-2cols">
+            <label class="rsq-radio-card"><input type="radio" name="additional_notes" value="Achieve 3x–10x ROI on marketing ad spend"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">Achieve 3x–10x ROI on marketing ad spend</span></label>
+            <label class="rsq-radio-card"><input type="radio" name="additional_notes" value="Establish a predictable, automated lead generation system"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">Build automated lead generation system</span></label>
+            <label class="rsq-radio-card"><input type="radio" name="additional_notes" value="Rapidly scale monthly revenue and market share"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">Rapidly scale monthly revenue & market share</span></label>
+            <label class="rsq-radio-card"><input type="radio" name="additional_notes" value="Build a premium high-converting brand identity & funnel"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">Build premium brand identity & funnel</span></label>
+            <label class="rsq-radio-card"><input type="radio" name="additional_notes" value="Gain complete clarity & end-to-end performance execution"><span class="rsq-radio-custom"></span><span class="rsq-radio-text">Gain complete clarity & performance execution</span></label>
+          </div>
+          <div class="rsq-error-msg">Please select your primary expectation.</div>
+        </div>
+      
+        <div class="rsq-step-bottom-actions">
+          <button type="button" class="rsq-btn rsq-btn-secondary rsq-btn-back-action">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px;"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            Previous Question
+          </button>
+        </div>
+      </div>
+
+      <!-- Submission Error Notice -->
+      <div id="rsq-submit-error-banner" class="rsq-submit-error-banner" style="display:none;">
+        <p>We couldn't submit your response right now. Please try again.</p>
+        <button type="button" class="rsq-btn rsq-btn-secondary" id="rsq-btn-retry">Try Again</button>
+      </div>
+
+      <!-- Navigation Buttons -->
+      <div class="rsq-actions">
+        <button type="button" class="rsq-btn rsq-btn-secondary" id="rsq-btn-back" class="rsq-btn rsq-btn-secondary rsq-btn-back-action" style="display:none;">← Back</button>
+        <div class="rsq-actions-right">
+          <button type="button" class="rsq-btn rsq-btn-primary" id="rsq-btn-next">Continue →</button>
+          <button type="submit" class="rsq-btn rsq-btn-primary" id="rsq-btn-submit" style="display:none;">
+            <span class="rsq-btn-text">Submit Assessment</span>
+            <span class="rsq-spinner" id="rsq-spinner" style="display:none;"></span>
+          </button>
+        </div>
+      </div>
+    </form>
+
+    <!-- Final Result View -->
+    <div id="rsq-result-screen" class="rsq-result-panel" style="display:none;">
+      <!-- Injected via JavaScript -->
+    </div>
+  </div>
+
+  <script>
+  (function() {
+    // Web App Endpoint URL
+    const GOOGLE_APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwe2FwYUejMW0sZxEaMiO_vbt0RiAKZi7RNixwYgFVV3Hs3RusK-n_FuYxiBGC4NEek/exec";
+
+    // Step Meta Configuration
+    const STEP_TITLES = {
+      1: "Contact Details",
+      2: "Industry & Metrics",
+      3: "Industry & Metrics",
+      4: "Industry & Metrics",
+      5: "Industry & Metrics",
+      6: "Growth Goals",
+      7: "Growth Goals",
+      8: "Growth Goals",
+      9: "Growth Goals",
+      10: "Budget & Timeline",
+      11: "Budget & Timeline",
+      12: "Budget & Timeline",
+      13: "Budget & Timeline",
+      14: "Final Evaluation",
+      15: "Final Evaluation",
+      16: "Final Evaluation"
+    };
+
+    const nodeForStep = {
+      1: 1,
+      2: 2, 3: 2, 4: 2, 5: 2,
+      6: 3, 7: 3, 8: 3, 9: 3,
+      10: 4, 11: 4, 12: 4, 13: 4,
+      14: 5, 15: 5, 16: 5
+    };
+
+    const progressPercentages = {
+      1: 0,
+      2: 7, 3: 13, 4: 20, 5: 26,
+      6: 33, 7: 40, 8: 46, 9: 53,
+      10: 60, 11: 66, 12: 73, 13: 80,
+      14: 86, 15: 93, 16: 100
+    };
+
+    const nodeFirstStep = {
+      1: 1,
+      2: 2,
+      3: 6,
+      4: 10,
+      5: 14
+    };
+
+    let currentStep = 1;
+    const totalSteps = 16;
+    let isTransitioning = false;
+
+    // DOM Elements
+    const container = document.getElementById("rsq-form-container");
+    const form = document.getElementById("rsq-multi-step-form");
+    const stepPanels = document.querySelectorAll(".rsq-step-panel");
+    const stepText = document.getElementById("rsq-step-text");
+    const stepTitle = document.getElementById("rsq-step-title");
+    const progressFill = document.getElementById("rsq-progress-fill");
+    const btnBack = document.getElementById("rsq-btn-back");
+    const btnNext = document.getElementById("rsq-btn-next");
+    const btnSubmit = document.getElementById("rsq-btn-submit");
+    const btnSubmitText = btnSubmit.querySelector(".rsq-btn-text");
+    const spinner = document.getElementById("rsq-spinner");
+    const submitErrorBanner = document.getElementById("rsq-submit-error-banner");
+    const btnRetry = document.getElementById("rsq-btn-retry");
+    const resultScreen = document.getElementById("rsq-result-screen");
+    const header = document.getElementById("rsq-header");
+
+    // Smooth Crossfade Transition Handler (Fade-Out Current Step & Fade-In Target Step)
+    function goToStep(targetStep, direction = 'next') {
+      if (targetStep === currentStep || isTransitioning) return;
+      if (targetStep < 1 || targetStep > totalSteps) return;
+
+      isTransitioning = true;
+      const currentPanel = document.querySelector(`.rsq-step-panel[data-step="${currentStep}"]`);
+      const targetPanel = document.querySelector(`.rsq-step-panel[data-step="${targetStep}"]`);
+
+      if (!currentPanel || !targetPanel) {
+        isTransitioning = false;
+        return;
+      }
+
+      // Step 1: Fade out current active step panel
+      if (direction === 'prev') {
+        currentPanel.classList.add('rsq-fading-out-reverse');
+      } else {
+        currentPanel.classList.add('rsq-fading-out');
+      }
+      currentPanel.classList.remove('rsq-active');
+
+      // Step 2: After fade out completes, swap display & fade in target panel
+      setTimeout(() => {
+        currentPanel.classList.remove('rsq-fading-out', 'rsq-fading-out-reverse');
+        currentPanel.style.display = 'none';
+
+        targetPanel.style.display = 'block';
+        targetPanel.classList.remove('rsq-fading-out', 'rsq-fading-out-reverse');
+        
+        // Trigger browser reflow to ensure CSS fade-in animates smoothly
+        void targetPanel.offsetWidth;
+
+        targetPanel.classList.add('rsq-active');
+        currentStep = targetStep;
+
+        // Update timeline nodes based on active section category
+        const activeNodeNum = nodeForStep[currentStep] || 1;
+        document.querySelectorAll('.rsq-timeline-node').forEach(node => {
+          const nodeStep = parseInt(node.getAttribute("data-node"), 10);
+          node.classList.remove('rsq-node-active', 'rsq-node-completed');
+          if (nodeStep < activeNodeNum) {
+            node.classList.add('rsq-node-completed');
+          } else if (nodeStep === activeNodeNum) {
+            node.classList.add('rsq-node-active');
+          }
+        });
+
+        // Update timeline line width
+        if (progressFill) {
+          progressFill.style.width = `${progressPercentages[currentStep]}%`;
+        }
+
+        if (stepText) stepText.textContent = `Question ${currentStep > 1 ? (currentStep + 4) : '1-5'} of 20`;
+        if (stepTitle) stepTitle.textContent = STEP_TITLES[currentStep];
+
+        // Button Visibility (Previous button is shown on Steps 2 to 16)
+        btnBack.style.display = currentStep > 1 ? "inline-flex" : "none";
+        
+        // Show "Continue ->" button ONLY on Step 1 (Contact info); option cards auto-advance!
+        if (currentStep === 1) {
+          btnNext.style.display = "inline-flex";
+          btnSubmit.style.display = "none";
+        } else if (currentStep === totalSteps) {
+          btnNext.style.display = "none";
+          btnSubmit.style.display = "inline-flex";
+        } else {
+          btnNext.style.display = "none";
+          btnSubmit.style.display = "none";
+        }
+
+        submitErrorBanner.style.display = "none";
+        container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+        isTransitioning = false;
+      }, 220);
+    }
+
+    // Auto-Advance IMMEDIATELY to Next Field on Option Selection
+    document.querySelectorAll('.rsq-radio-card input[type="radio"]').forEach(radio => {
+      radio.addEventListener('change', function() {
+        const name = this.name;
+        // Highlight active radio card
+        document.querySelectorAll(`.rsq-radio-card input[name="${name}"]`).forEach(r => {
+          r.closest('.rsq-radio-card').classList.remove('rsq-card-selected');
+        });
+        if (this.checked) {
+          this.closest('.rsq-radio-card').classList.add('rsq-card-selected');
+        }
+        const fieldGroup = this.closest('.rsq-field-group');
+        if (fieldGroup) {
+          fieldGroup.classList.remove('rsq-field-error');
+        }
+
+        // Auto-advance IMMEDIATELY after 200ms selection feedback animation
+        if (currentStep < totalSteps) {
+          setTimeout(() => {
+            goToStep(currentStep + 1, 'next');
+          }, 200);
+        } else if (currentStep === totalSteps) {
+          // Final question selected: trigger submit
+          setTimeout(() => {
+            form.dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }));
+          }, 300);
+        }
+      });
+    });
+
+    // International Country Codes Dataset
+    const COUNTRIES = [
+      { name: "India", code: "+91", flag: "🇮🇳" },
+      { name: "United States", code: "+1", flag: "🇺🇸" },
+      { name: "United Kingdom", code: "+44", flag: "🇬🇧" },
+      { name: "United Arab Emirates", code: "+971", flag: "🇦🇪" },
+      { name: "Australia", code: "+61", flag: "🇦🇺" },
+      { name: "Canada", code: "+1", flag: "🇨🇦" },
+      { name: "Singapore", code: "+65", flag: "🇸🇬" },
+      { name: "Saudi Arabia", code: "+966", flag: "🇸🇦" },
+      { name: "Qatar", code: "+974", flag: "🇶🇦" },
+      { name: "Kuwait", code: "+965", flag: "🇰🇼" },
+      { name: "Oman", code: "+968", flag: "🇴🇲" },
+      { name: "Bahrain", code: "+973", flag: "🇧🇭" },
+      { name: "Malaysia", code: "+60", flag: "🇲🇾" },
+      { name: "Indonesia", code: "+62", flag: "🇮🇩" },
+      { name: "Ireland", code: "+353", flag: "🇮🇪" },
+      { name: "Italy", code: "+39", flag: "🇮🇹" },
+      { name: "Israel", code: "+972", flag: "🇮🇱" },
+      { name: "Iran", code: "+98", flag: "🇮🇷" },
+      { name: "Iraq", code: "+964", flag: "🇮🇶" },
+      { name: "Ivory Coast", code: "+225", flag: "🇨🇮" },
+      { name: "Iceland", code: "+354", flag: "🇮🇸" },
+      { name: "Germany", code: "+49", flag: "🇩🇪" },
+      { name: "France", code: "+33", flag: "🇫🇷" },
+      { name: "Spain", code: "+34", flag: "🇪🇸" },
+      { name: "Netherlands", code: "+31", flag: "🇳🇱" },
+      { name: "Switzerland", code: "+41", flag: "🇨🇭" },
+      { name: "Sweden", code: "+46", flag: "🇸🇪" },
+      { name: "Norway", code: "+47", flag: "🇳🇴" },
+      { name: "Denmark", code: "+45", flag: "🇩🇰" },
+      { name: "Finland", code: "+358", flag: "🇫🇮" },
+      { name: "Belgium", code: "+32", flag: "🇧🇪" },
+      { name: "Austria", code: "+43", flag: "🇦🇹" },
+      { name: "Portugal", code: "+351", flag: "🇵🇹" },
+      { name: "Greece", code: "+30", flag: "🇬🇷" },
+      { name: "Turkey", code: "+90", flag: "🇹🇷" },
+      { name: "Russia", code: "+7", flag: "🇷🇺" },
+      { name: "Poland", code: "+48", flag: "🇵🇱" },
+      { name: "Czech Republic", code: "+420", flag: "🇨🇿" },
+      { name: "Hungary", code: "+36", flag: "🇭🇺" },
+      { name: "Romania", code: "+40", flag: "🇷🇴" },
+      { name: "Ukraine", code: "+380", flag: "🇺🇦" },
+      { name: "New Zealand", code: "+64", flag: "🇳🇿" },
+      { name: "South Africa", code: "+27", flag: "🇿🇦" },
+      { name: "Brazil", code: "+55", flag: "🇧🇷" },
+      { name: "Mexico", code: "+52", flag: "🇲🇽" },
+      { name: "Argentina", code: "+54", flag: "🇦🇷" },
+      { name: "Colombia", code: "+57", flag: "🇨🇴" },
+      { name: "Chile", code: "+56", flag: "🇨🇱" },
+      { name: "Peru", code: "+51", flag: "🇵🇪" },
+      { name: "Japan", code: "+81", flag: "🇯🇵" },
+      { name: "South Korea", code: "+82", flag: "🇰🇷" },
+      { name: "China", code: "+86", flag: "🇨🇳" },
+      { name: "Hong Kong", code: "+852", flag: "🇭🇰" },
+      { name: "Taiwan", code: "+886", flag: "🇹🇼" },
+      { name: "Thailand", code: "+66", flag: "🇹🇭" },
+      { name: "Vietnam", code: "+84", flag: "🇻🇳" },
+      { name: "Philippines", code: "+63", flag: "🇵🇭" },
+      { name: "Sri Lanka", code: "+94", flag: "🇱🇰" },
+      { name: "Bangladesh", code: "+880", flag: "🇧🇩" },
+      { name: "Pakistan", code: "+92", flag: "🇵🇰" },
+      { name: "Nepal", code: "+977", flag: "🇳🇵" },
+      { name: "Maldives", code: "+960", flag: "🇲🇻" },
+      { name: "Egypt", code: "+20", flag: "🇪🇬" },
+      { name: "Nigeria", code: "+234", flag: "🇳🇬" },
+      { name: "Kenya", code: "+254", flag: "🇰🇪" },
+      { name: "Morocco", code: "+212", flag: "🇲🇦" }
+    ];
+
+    let selectedCountry = COUNTRIES[0]; // Default: India (+91)
+
+    // Country Dropdown Elements
+    const countryDropdown = document.getElementById("rsq-country-dropdown");
+    const countryBtn = document.getElementById("rsq-country-btn");
+    const countrySelectedFlag = document.getElementById("rsq-country-selected-flag");
+    const countrySelectedCode = document.getElementById("rsq-country-selected-code");
+    const countryMenu = document.getElementById("rsq-country-menu");
+    const countrySearch = document.getElementById("rsq-country-search");
+    const countryListElem = document.getElementById("rsq-country-list");
+    const hiddenCountryCodeInput = document.getElementById("rsq_country_code");
+    const phoneInputElem = document.getElementById("rsq_phone");
+
+    // Render Country Dropdown Items with Search Filter
+    function renderCountryList(query = '') {
+      const q = query.trim().toLowerCase();
+      countryListElem.innerHTML = '';
+      
+      const filtered = COUNTRIES.filter(c => 
+        c.name.toLowerCase().includes(q) || c.code.includes(q)
+      );
+
+      if (filtered.length === 0) {
+        countryListElem.innerHTML = `<div class="rsq-no-results">No countries found</div>`;
+        return;
+      }
+
+      filtered.forEach(c => {
+        const item = document.createElement('div');
+        item.className = 'rsq-country-item' + (c.code === selectedCountry.code && c.name === selectedCountry.name ? ' rsq-selected' : '');
+        item.innerHTML = `
+          <div class="rsq-country-item-left">
+            <span class="rsq-country-flag">${c.flag}</span>
+            <span class="rsq-country-item-name">${c.name}</span>
+          </div>
+          <span class="rsq-country-item-code">${c.code}</span>
+        `;
+        item.addEventListener('click', (e) => {
+          e.stopPropagation();
+          selectCountry(c);
+        });
+        countryListElem.appendChild(item);
+      });
+    }
+
+    function selectCountry(country) {
+      selectedCountry = country;
+      countrySelectedFlag.textContent = country.flag;
+      countrySelectedCode.textContent = country.code;
+      if (hiddenCountryCodeInput) hiddenCountryCodeInput.value = country.code;
+      closeCountryDropdown();
+    }
+
+    function toggleCountryDropdown() {
+      const isOpen = countryDropdown.classList.contains("rsq-open");
+      if (isOpen) {
+        closeCountryDropdown();
+      } else {
+        openCountryDropdown();
+      }
+    }
+
+    function openCountryDropdown() {
+      countryDropdown.classList.add("rsq-open");
+      countryMenu.style.display = "block";
+      countryBtn.setAttribute("aria-expanded", "true");
+      renderCountryList('');
+      if (countrySearch) {
+        countrySearch.value = '';
+        setTimeout(() => countrySearch.focus(), 50);
+      }
+    }
+
+    function closeCountryDropdown() {
+      countryDropdown.classList.remove("rsq-open");
+      countryMenu.style.display = "none";
+      countryBtn.setAttribute("aria-expanded", "false");
+    }
+
+    if (countryBtn) {
+      countryBtn.addEventListener("click", function(e) {
+        e.stopPropagation();
+        toggleCountryDropdown();
+      });
+    }
+
+    if (countrySearch) {
+      countrySearch.addEventListener("input", function() {
+        renderCountryList(this.value);
+      });
+    }
+
+    // Close dropdown when clicking outside
+    document.addEventListener("click", function(e) {
+      if (countryDropdown && !countryDropdown.contains(e.target)) {
+        closeCountryDropdown();
+      }
+    });
+
+    // 10-Digit Max Length & Numeric Input Enforcement for Phone Field
+    if (phoneInputElem) {
+      phoneInputElem.addEventListener("input", function() {
+        // Strip non-numeric characters
+        this.value = this.value.replace(/[^0-9]/g, '');
+        // Cap strictly at 10 digits
+        if (this.value.length > 10) {
+          this.value = this.value.slice(0, 10);
+        }
+        const fieldGroup = this.closest('.rsq-field-group');
+        if (fieldGroup) {
+          fieldGroup.classList.remove('rsq-field-error');
+        }
+      });
+    }
+
+    // Clear input errors on typing
+    document.querySelectorAll('.rsq-input').forEach(elem => {
+      elem.addEventListener('input', function() {
+        const fieldGroup = this.closest('.rsq-field-group');
+        if (fieldGroup) {
+          fieldGroup.classList.remove('rsq-field-error');
+        }
+      });
+    });
+
+    // Node click navigation for completed section categories
+    document.querySelectorAll('.rsq-timeline-node').forEach(node => {
+      node.addEventListener('click', function() {
+        const targetNode = parseInt(this.getAttribute("data-node"), 10);
+        const targetStep = nodeFirstStep[targetNode] || 1;
+        if (targetStep < currentStep) {
+          goToStep(targetStep, 'prev');
+        }
+      });
+    });
+
+    // Validate Email Format
+    function isValidEmail(email) {
+      const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return re.test(String(email).toLowerCase());
+    }
+
+    // Validate Current Step Fields
+    function validateCurrentStep() {
+      const activePanel = document.querySelector(`.rsq-step-panel[data-step="${currentStep}"]`);
+      let isValid = true;
+
+      // 1. Text Inputs Validation (Step 1)
+      const inputs = activePanel.querySelectorAll('.rsq-input');
+      inputs.forEach(input => {
+        const fieldGroup = input.closest('.rsq-field-group');
+        const isRequired = fieldGroup ? fieldGroup.querySelector('.rsq-required-star') !== null : false;
+
+        if (isRequired) {
+          const val = input.value.trim();
+          if (!val) {
+            fieldGroup.classList.add('rsq-field-error');
+            isValid = false;
+          } else if (input.type === 'email' && !isValidEmail(val)) {
+            fieldGroup.classList.add('rsq-field-error');
+            isValid = false;
+          } else if (input.id === 'rsq_phone') {
+            const digits = val.replace(/[^0-9]/g, '');
+            if (digits.length !== 10) {
+              fieldGroup.classList.add('rsq-field-error');
+              const errElem = document.getElementById("rsq-phone-error");
+              if (errElem) errElem.textContent = "Please enter a valid 10-digit phone number.";
+              isValid = false;
+            } else {
+              fieldGroup.classList.remove('rsq-field-error');
+            }
+          } else {
+            fieldGroup.classList.remove('rsq-field-error');
+          }
+        }
+      });
+
+      // 2. Radio Groups Validation (Steps 2 - 5)
+      activePanel.querySelectorAll('.rsq-radio-grid').forEach(grid => {
+        const fieldGroup = grid.closest('.rsq-field-group');
+        const firstRadio = grid.querySelector('input[type="radio"]');
+        if (firstRadio) {
+          const name = firstRadio.name;
+          const isChecked = grid.querySelector(`input[name="${name}"]:checked`) !== null;
+          if (!isChecked) {
+            fieldGroup.classList.add('rsq-field-error');
+            isValid = false;
+          } else {
+            fieldGroup.classList.remove('rsq-field-error');
+          }
+        }
+      });
+
+      if (!isValid) {
+        const firstError = activePanel.querySelector('.rsq-field-error');
+        if (firstError) {
+          firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }
+
+      return isValid;
+    }
+
+    // Collect All Form Data across all 20 questions
+    function collectFormData() {
+      const formData = {};
+      const formDataObj = new FormData(form);
+      for (let [key, val] of formDataObj.entries()) {
+        formData[key] = val;
+      }
+      return formData;
+    }
+
+    // Calculate Internal Scoring & Status
+    function calculateScoring(data) {
+      let annualRevenueScore = 0;
+      const ar = data.annual_revenue || '';
+      if (ar === '₹10–50 lakh') annualRevenueScore = 15;
+      else if (ar === '₹50 lakh–₹1 crore') annualRevenueScore = 20;
+      else if (ar === '₹1–5 crore' || ar === '₹5–10 crore' || ar === '₹10 crore+') annualRevenueScore = 25;
+
+      let marketingSpendScore = 0;
+      const ms = data.marketing_spend || '';
+      if (ms === '₹1–5 lakh' || ms === '₹5–10 lakh' || ms === '₹10 lakh+') marketingSpendScore = 15;
+
+      let budgetScore = 0;
+      const b = data.budget || '';
+      if (b === "Willing to invest based on ROI" || b === "I'm willing to invest based on ROI" || b === "₹3–5 lakh/month" || b === "₹5 lakh+/month" || b === "₹1–3 lakh/month") {
+        budgetScore = 15;
+      }
+
+      let startTimelineScore = 0;
+      const st = data.start_timeline || '';
+      if (st.includes('Immediately') || st.includes('30 days')) {
+        startTimelineScore = 15;
+      }
+
+      let decisionMakerScore = 0;
+      const dm = data.decision_maker || '';
+      if (dm.includes('Sole decision maker') || dm.includes('Co-founders')) {
+        decisionMakerScore = 15;
+      }
+
+      let investmentReadinessScore = 0;
+      const ir = data.investment_readiness || '';
+      if (ir.includes('fully prepared') || ir.includes('Potentially')) {
+        investmentReadinessScore = 10;
+      }
+
+      const totalScore = annualRevenueScore + marketingSpendScore + budgetScore + startTimelineScore + decisionMakerScore + investmentReadinessScore;
+      const status = totalScore >= 60 ? 'QUALIFIED' : 'NOT QUALIFIED';
+
+      return { totalScore, status };
+    }
+
+    
+    // Delegated listener for all Previous Question buttons (Top, Bottom & Main Nav)
+    document.addEventListener("click", function(e) {
+      const backBtn = e.target.closest('.rsq-btn-back-action');
+      if (backBtn) {
+        e.preventDefault();
+        if (currentStep > 1) {
+          goToStep(currentStep - 1, 'prev');
+        }
+      }
+    });
+
+    // Next Button Click Handler (Fade out active step & fade in next step)
+    btnNext.addEventListener("click", function() {
+      if (validateCurrentStep()) {
+        if (currentStep < totalSteps) {
+          goToStep(currentStep + 1, 'next');
+        }
+      }
+    });
+
+    // Previous Button Click Handler (Fade out active step & fade in previous step to refill details)
+    btnBack.addEventListener("click", function() {
+      if (currentStep > 1) {
+        goToStep(currentStep - 1, 'prev');
+      }
+    });
+
+    btnRetry.addEventListener("click", function() {
+      submitErrorBanner.style.display = "none";
+      form.dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }));
+    });
+
+    // Submit Handler
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      if (!validateCurrentStep()) {
+        return;
+      }
+
+      // Enable Loading State
+      btnSubmit.disabled = true;
+      btnBack.disabled = true;
+      btnSubmitText.textContent = "Submitting...";
+      spinner.style.display = "inline-block";
+      submitErrorBanner.style.display = "none";
+
+      const data = collectFormData();
+      const scoring = calculateScoring(data);
+
+      // Build 20-Question Payload
+      const payload = {
+        timestamp: new Date().toISOString(),
+        full_name: data.full_name || '',
+        work_email: data.work_email || '',
+        phone: `${data.country_code || '+91'} ${data.phone || ''}`.trim(),
+        company_name: data.company_name || '',
+        website: data.website || '',
+        industry: data.industry || '',
+        monthly_revenue: data.monthly_revenue || '',
+        annual_revenue: data.annual_revenue || '',
+        marketing_spend: data.marketing_spend || '',
+        growth_goal: data.growth_goal || '',
+        revenue_target: data.revenue_target || '',
+        additional_revenue: data.additional_revenue || '',
+        growth_problem: data.growth_problem || '',
+        previous_investment: data.previous_investment || '',
+        budget: data.budget || '',
+        start_timeline: data.start_timeline || '',
+        decision_maker: data.decision_maker || '',
+        investment_readiness: data.investment_readiness || '',
+        partner_reason: data.partner_reason || '',
+        additional_notes: data.additional_notes || '',
+        total_score: scoring.totalScore,
+        status: scoring.status
+      };
+
+      // Submit Payload to Google Apps Script Endpoint
+      fetch(GOOGLE_APPS_SCRIPT_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8"
+        },
+        body: JSON.stringify(payload)
+      })
+      .then(response => {
+        if (!response.ok && response.status !== 0) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json().catch(() => ({ status: "success" }));
+      })
+      .then(res => {
+        // Hide form & header; show final qualification result screen
+        form.style.display = "none";
+        header.style.display = "none";
+        resultScreen.style.display = "block";
+
+        resultScreen.innerHTML = `
+          <div class="rsq-result-icon-wrap" style="background: rgba(212, 162, 58, 0.15); border: 2px solid #D4A23A; color: #D4A23A;">
+            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          </div>
+          <h2 class="rsq-result-title" style="color: #D4A23A; font-size: 32px; font-weight: 800; margin-bottom: 12px; letter-spacing: -0.02em;">Thank You For Your Response</h2>
+          <p style="color: #D4A23A; font-size: 20px; font-weight: 600; max-width: 620px; margin: 0 auto; line-height: 1.6;">Our team will contact you shortly.</p>
+        `;
+
+        container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      })
+      .catch(err => {
+        // Show Submission Error Banner
+        btnSubmit.disabled = false;
+        btnBack.disabled = false;
+        btnSubmitText.textContent = "Submit Assessment";
+        spinner.style.display = "none";
+        submitErrorBanner.style.display = "block";
+      });
+    });
+
+  })();
+  </script>
+</body>
+</html>
