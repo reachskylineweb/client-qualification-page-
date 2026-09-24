@@ -1104,6 +1104,13 @@
           <label class="rsq-label" for="rsq_website"><span class="rsq-q-number">5.</span> Website / LinkedIn <span style="font-weight:400; color:#A1A1AA;">(Optional)</span></label>
           <input type="text" class="rsq-input" id="rsq_website" name="website" placeholder="https://company.com or linkedin.com/in/profile">
         </div>
+
+        <!-- Q6 (Why Reach Us) -->
+        <div class="rsq-field-group">
+          <label class="rsq-label" for="rsq_why_reach_us"><span class="rsq-q-number">6.</span> Why are you reaching out to us? <span class="rsq-required-star">*</span></label>
+          <input type="text" class="rsq-input" id="rsq_why_reach_us" name="why_reach_us" placeholder="e.g., Looking for growth marketing, lead generation, sales funnels, ad scaling...">
+          <div class="rsq-error-msg">Please enter why you are reaching out to us.</div>
+        </div>
       </div>
 
       <!-- STEP 2: Q6 Industry -->
@@ -2200,6 +2207,7 @@
         phone: `${data.country_code || '+91'} ${data.phone || ''}`.trim(),
         company_name: data.company_name || '',
         website: data.website || '',
+        why_reach_us: data.why_reach_us || '',
         industry: data.industry || '',
         monthly_revenue: data.monthly_revenue || '',
         annual_revenue: data.annual_revenue || '',
